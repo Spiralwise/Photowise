@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         MainWindow.cpp \
-        DialogBlur.cpp
+        DialogBlur.cpp \
+        QOpenCVPreview.cpp
 
 HEADERS  += MainWindow.h \
-            DialogBlur.h
+            DialogBlur.h \
+            QOpenCVPreview.h
 
 FORMS    += mainwindow.ui \
             dialog_blur.ui

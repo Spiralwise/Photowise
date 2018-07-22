@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <opencv2/core.hpp>
 
 
 namespace Ui {
@@ -19,23 +18,12 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    cv::Mat imageSource;
-    cv::Mat imageBuffer;
-    QImage::Format activeFormat;
 
-    void updatePreview();
-    void revertPreview();
-    void updateChange();
-
-    void LoadImage(const QString &path);
-
-public:
-    void blur(int);
 
 private slots:
     void open();
-    void blurMore();
-    void grayscale();
+    void applyGrayscale();
+    void dialogBlur();
 };
 
 #endif // MAINWINDOW_H

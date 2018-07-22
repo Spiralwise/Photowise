@@ -2,9 +2,10 @@
 #include "ui_dialog_blur.h"
 
 
-DialogBlur::DialogBlur(MainWindow *parent) :
+DialogBlur::DialogBlur(QOpenCVPreview *openCVPreview, MainWindow *parent) :
     QDialog(parent),
     window(parent),
+    preview(openCVPreview),
     ui(new Ui::DialogBlur)
 {
     ui->setupUi(this);
@@ -27,5 +28,5 @@ DialogBlur::~DialogBlur()
 void DialogBlur::setBlurSize(int value)
 {
     if (value)
-        window->blur(value);
+        preview->Blur(value);
 }
