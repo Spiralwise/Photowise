@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::open);
     connect(ui->actionBlur, &QAction::triggered, this, &MainWindow::blur);
+    connect(ui->actionGrayscale, &QAction::triggered, this, &MainWindow::grayscale);
 }
 
 
@@ -26,12 +27,19 @@ MainWindow::~MainWindow()
 }
 
 
+void MainWindow::updateImage()
+{
+    ui->image->setPixmap(QPixmap::fromImage(QImage(imageBuffer.data, imageBuffer.cols, imageBuffer.rows, (int)imageBuffer.step, activeFormat)));
+}
+
+
 void MainWindow::LoadImage(const QString &path)
 {
     imageSource = cv::imread(path.toStdString());
     cv::cvtColor(imageSource, imageSource, cv::COLOR_BGR2RGB);
     imageBuffer = imageSource.clone();
-    ui->image->setPixmap(QPixmap::fromImage(QImage(imageBuffer.data, imageBuffer.cols, imageBuffer.rows, (int)imageBuffer.step, QImage::Format_RGB888)));
+    activeFormat = QImage::Format_RGB888;
+    updateImage();
 }
 
 
@@ -46,5 +54,13 @@ void MainWindow::open()
 void MainWindow::blur()
 {
     cv::blur(imageBuffer, imageBuffer, cv::Size(5, 5));
-    ui->image->setPixmap(QPixmap::fromImage(QImage(imageBuffer.data, imageBuffer.cols, imageBuffer.rows, (int)imageBuffer.step, QImage::Format_RGB888)));
+    updateImage();
+}
+
+
+void MainWindow::grayscale()
+{
+    cv::cvtColor(imageBuffer, imageBuffer, cv::COLOR_RGB2GRAY);
+    activeFormat = QImage::Format_Grayscale8;
+    updateImage();
 }

@@ -21,12 +21,16 @@ private:
     Ui::MainWindow *ui;
     cv::Mat imageSource;
     cv::Mat imageBuffer;
+    QImage::Format activeFormat;
+
+    void updateImage();
 
     void LoadImage(const QString &path);
 
 private slots:
     void open();
     void blur();
+    void grayscale();
 };
 
 #endif // MAINWINDOW_H

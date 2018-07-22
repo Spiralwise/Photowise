@@ -44,6 +44,7 @@
      <string>Effects</string>
     </property>
     <addaction name="actionBlur"/>
+    <addaction name="actionGrayscale"/>
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
@@ -77,6 +78,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionGrayscale">
+   <property name="text">
+    <string>Grayscale</string>
    </property>
   </action>
  </widget>
