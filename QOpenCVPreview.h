@@ -16,6 +16,8 @@ class QOpenCVPreview : public QLabel
 
     void updatePreview();
 
+    void mouseMoveEvent(QMouseEvent*) override;
+
 public:
     QOpenCVPreview(QWidget *parent);
 
