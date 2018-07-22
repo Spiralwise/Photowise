@@ -34,10 +34,9 @@ void MainWindow::LoadImage(const QString &path)
 }
 
 
-bool MainWindow::open()
+void MainWindow::open()
 {
     QString filepath = QFileDialog::getOpenFileName(this);
     if (!filepath.isEmpty())
         LoadImage(filepath);
-    return true;
 }

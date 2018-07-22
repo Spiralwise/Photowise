@@ -25,7 +25,7 @@ private:
     void LoadImage(const QString &path);
 
 private slots:
-    bool open();
+    void open();
 
 };
 
