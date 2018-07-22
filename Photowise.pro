@@ -13,11 +13,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        MainWindow.cpp
+        MainWindow.cpp \
+        DialogBlur.cpp
 
-HEADERS  += MainWindow.h
+HEADERS  += MainWindow.h \
+            DialogBlur.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+            dialog_blur.ui
 
 CONFIG(debug, debug|release) {
     LIBS     += -L"D:\dev\opencv\own-build\lib\Debug" \

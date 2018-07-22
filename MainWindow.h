@@ -23,13 +23,18 @@ private:
     cv::Mat imageBuffer;
     QImage::Format activeFormat;
 
-    void updateImage();
+    void updatePreview();
+    void revertPreview();
+    void updateChange();
 
     void LoadImage(const QString &path);
 
+public:
+    void blur(int);
+
 private slots:
     void open();
-    void blur();
+    void blurMore();
     void grayscale();
 };
 
