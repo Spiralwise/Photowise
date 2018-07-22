@@ -26,7 +26,7 @@ private:
 
 private slots:
     void open();
-
+    void blur();
 };
 
 #endif // MAINWINDOW_H

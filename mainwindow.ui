@@ -43,7 +43,7 @@
     <property name="title">
      <string>Effects</string>
     </property>
-    <addaction name="actionBlue"/>
+    <addaction name="actionBlur"/>
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
@@ -63,7 +63,7 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionBlue">
+  <action name="actionBlur">
    <property name="text">
     <string>Blur</string>
    </property>

@@ -15,8 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("Photowise");
 
-    //cv::blur(image, image, cv::Size(5, 20));
     connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::open);
+    connect(ui->actionBlur, &QAction::triggered, this, &MainWindow::blur);
 }
 
 
@@ -30,7 +30,8 @@ void MainWindow::LoadImage(const QString &path)
 {
     imageSource = cv::imread(path.toStdString());
     cv::cvtColor(imageSource, imageSource, cv::COLOR_BGR2RGB);
-    ui->image->setPixmap(QPixmap::fromImage(QImage(imageSource.data, imageSource.cols, imageSource.rows, imageSource.step, QImage::Format_RGB888)));
+    imageBuffer = imageSource.clone();
+    ui->image->setPixmap(QPixmap::fromImage(QImage(imageBuffer.data, imageBuffer.cols, imageBuffer.rows, (int)imageBuffer.step, QImage::Format_RGB888)));
 }
 
 
@@ -39,4 +40,11 @@ void MainWindow::open()
     QString filepath = QFileDialog::getOpenFileName(this);
     if (!filepath.isEmpty())
         LoadImage(filepath);
+}
+
+
+void MainWindow::blur()
+{
+    cv::blur(imageBuffer, imageBuffer, cv::Size(5, 5));
+    ui->image->setPixmap(QPixmap::fromImage(QImage(imageBuffer.data, imageBuffer.cols, imageBuffer.rows, (int)imageBuffer.step, QImage::Format_RGB888)));
 }
