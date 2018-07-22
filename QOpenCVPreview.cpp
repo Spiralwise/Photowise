@@ -5,9 +5,8 @@
 #include <opencv2/highgui.hpp>
 
 
-QOpenCVPreview::QOpenCVPreview(QWidget *parent)
+QOpenCVPreview::QOpenCVPreview(QWidget *parent) : parent(parent)
 {
-    // Empty constructor
 }
 
 void QOpenCVPreview::updatePreview()

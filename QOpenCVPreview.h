@@ -9,6 +9,7 @@ class QOpenCVPreview : public QLabel
 {
     Q_OBJECT
 
+    QWidget *parent;
     cv::Mat imageSource;
     cv::Mat imageBuffer;
     QImage::Format activeFormat;
